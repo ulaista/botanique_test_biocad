@@ -38,9 +38,9 @@ jobs:
 
       - name: Restart application on VDS server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VDS_USER }}@${{ secrets.VDS_HOST }} << 'EOF'
+            ssh -o StrictHostKeyChecking=no -t ${{ secrets.VDS_USER }}@${{ secrets.VDS_HOST }} << 'EOF'
             cd ${{ secrets.VDS_PATH }}
             npm install
             pm2 stop botanique_test_biocad || true
             pm2 start dist/app.js --name botanique_test_biocad
-          EOF
+            EOF
