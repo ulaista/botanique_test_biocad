@@ -1,0 +1,118 @@
+<div class="analytics-container">
+    <div class="device-header">
+        <div class="device-info">
+            <div class="device-icon">
+                <img src="/static/unknown_device.svg" alt="Device Icon" />
+            </div>
+            <div class="device-details">
+                <h2>pH-метр Mettler-Toledo International, Inc. SevenCompact S220</h2>
+                <p class="device-meta">S1.4.I14-9.001 · 00-024004</p>
+            </div>
+        </div>
+        <div class="device-actions">
+            <button class="status-button">В работе ▼</button>
+            <div class="favorite-button">
+                <img src="/static/heart-icon.svg" alt="Favorite" />
+            </div>
+            <div class="settings-button">
+                <img src="/static/settings.svg" alt="Settings" />
+            </div>
+        </div>
+    </div>    
+
+    <div class="device-actions-on">
+        <div class="dropdown">
+            <button class="dropdown-button">Работа прибора ▼</button>
+        </div>
+        <div class="actions-icons">
+            <div class="icon-button">
+                <img src="/static/timer-icon.svg" alt="Timer" />
+            </div>
+            <div class="actions-icons-pdf">
+                <div class="save-pdf-button">СОХРАНИТЬ PDF</div>
+                <div class="more-options-button">⋮</div>
+            </div>
+        </div>
+    </div>    
+
+    <div class="date-filter">
+        <div class="date-range">
+            <input
+                type="datetime-local"
+                value="2021-10-07T10:55"
+                class="date-input"
+            />
+            <span class="date-separator">→</span>
+            <input
+                type="datetime-local"
+                value="2021-10-21T10:55"
+                class="date-input"
+            />
+        </div>
+        <div class="time-buttons">
+            <div class="time-button">День</div>
+            <div class="time-button">Неделя</div>
+            <div class="time-button active">2 недели</div>
+            <div class="time-button">Месяц</div>
+            <div class="time-button">3 месяца</div>
+            <div class="time-button">Полгода</div>
+        </div>
+    </div>    
+
+    <table class="work-log-table">
+        <thead>
+            <tr>
+                <th>Начало</th>
+                <th>Тип работ</th>
+                <th>Работы</th>
+                <th>Результат</th>
+                <th>Пользователь</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>09.10.2021, 15:46</td>
+                <td>
+                    <span class="status in-progress">В работе</span><br />
+                    Измерение
+                </td>
+                <td>
+                    Образец/серия: 000100057935_170000010325_0000251849
+                </td>
+                <td class="result-check">
+                    <p>
+                        Промывка с указанием вещества: Вещество
+                        Комментарий:
+                        тест успешности
+                    </p>
+                    <img src="/static/check-icon.svg" alt="Completed" class="check-icon" />
+                </td>
+                <td>
+                    <a href="#" class="user-link">morozovava</a>
+                </td>
+            </tr>
+            <tr>
+                <td>12.10.2021, 12:17</td>
+                <td>
+                    <span class="status in-progress">В работе</span><br />
+                    Калибровка
+                </td>
+                <td>
+                    Номер колонки: Колонка 2<br />
+                    Образец: Образец 2<br />
+                    Образец: образец 1<br />
+                    Метод: метов тестовый<br />
+                    Номер колонки: Колонка 1
+                </td>
+                <td class="result-check">
+                    <p>
+                    </p>
+                    <img src="/static/check-icon.svg" alt="Completed" class="check-icon" />
+                </td>
+                <td>
+                    <a href="#" class="user-link">morozovava</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+</div>

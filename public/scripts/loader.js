@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 function loadComponent(selector, componentPath) {
-    fetch(componentPath)
+    return fetch(componentPath)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Ошибка загрузки ${componentPath}: ${response.statusText}`);
@@ -9,5 +10,7 @@ function loadComponent(selector, componentPath) {
         .then(html => {
             document.querySelector(selector).innerHTML = html;
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+            console.error(error);
+        });
 }

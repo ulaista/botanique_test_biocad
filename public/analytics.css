@@ -1,0 +1,284 @@
+.analytics-container {
+  background-color: white;
+  margin: 0 auto;
+  max-width: 1088px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.device-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.device-info {
+  display: flex;
+  align-items: center;
+}
+
+.device-icon img {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+.device-details h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.device-meta {
+  font-size: 14px;
+  color: #777;
+  margin-top: 4px;
+}
+
+.device-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-button {
+  background: #e8f5e9;
+  color: #4caf50;
+  border: 1px solid #4caf50;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.favorite-button img,
+.settings-button img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.favorite-button img {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.favorite-button img:hover {
+  filter: none;
+}
+
+.settings-button img {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.settings-button img:hover {
+  opacity: 1;
+}
+
+.device-actions-on {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-button:hover {
+  background-color: #f0f0f0;
+}
+
+.actions-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.actions-icons-pdf {
+  padding: 4px;
+  border: 1px solid #f5f5f5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.icon-button img {
+  height: 40px;
+  width: 40px;
+}
+
+.save-pdf-button {
+  color: #4caf50;
+  border-right: solid;
+  border-radius: 2px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-pdf-button:hover {
+  background-color: #45a049;
+  color: white;
+}
+
+.more-options-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 10px;
+  color: #45a049;
+  transition: color 0.3s ease;
+}
+
+.more-options-button:hover {
+  color: #333;
+}
+
+.date-filter {
+  background-color: white;
+  gap: 15px;
+  padding: 20px 1em;
+}
+
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  color: #333;
+  width: 200px;
+}
+
+.date-separator {
+  font-size: 16px;
+  color: #666;
+}
+
+.time-buttons {
+  margin-top: 1em;
+  display: flex;
+  gap: 10px;
+}
+
+.time-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #555;
+  border-radius: 20px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.time-button:hover {
+  background-color: #e0e0e0;
+}
+
+.time-button.active {
+  background-color: #d7eddb;
+  border-color: #4caf50;
+}
+
+.work-log-table {
+  margin-top: 1em;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.work-log-table th,
+.work-log-table td {
+  padding: 15px;
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+}
+
+.work-log-table th {
+  color: #9e9e9ef2;
+  font-weight: 400;
+}
+
+.work-log-table tr td:first-child {
+  color: #9e9e9ef2;
+}
+
+.work-log-table tr:last-child td {
+  border-bottom: none;
+}
+
+.work-log-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.status {
+  padding: 3px 6px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.status.in-progress {
+  color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+.check-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.user-link {
+  color: #2e9bc2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.user-link:hover {
+  text-decoration: underline;
+}
+
+.result-check {
+  display: flex;
+}
+.result-check p {
+  width: 100px;
+  height: 67px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
