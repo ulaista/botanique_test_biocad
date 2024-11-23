@@ -46,11 +46,11 @@ jobs:
     
               cd ${{ secrets.VDS_PATH }}
     
-              if [ -f dist/app.js ]; then
+              if [ -f dist/server/app.js ]; then
                 pm2 stop botanique_test_biocad || true
-                pm2 start dist/app.js --name botanique_test_biocad
+                pm2 start dist/server/app.js --name botanique_test_biocad
               else
-                echo "Error: dist/app.js not found"
+                echo "Error: dist/server/app.js not found"
                 exit 1
               fi
           EOF
