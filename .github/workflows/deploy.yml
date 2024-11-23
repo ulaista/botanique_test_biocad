@@ -1,0 +1,45 @@
+name: Deploy to VDS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Prepare SSH key
+        run: |
+          echo "$VDS_SSH_KEY" | base64 -d > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+        env:
+          VDS_SSH_KEY: ${{ secrets.VDS_SSH_KEY }}
+
+      - name: Copy files to VDS server
+        run: |
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" dist/ ${{ secrets.VDS_USER }}@${{ secrets.VDS_HOST }}:${{ secrets.VDS_PATH }}
+
+      - name: Restart application on VDS server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VDS_USER }}@${{ secrets.VDS_HOST }} << 'EOF'
+            cd ${{ secrets.VDS_PATH }}
+            npm install
+            pm2 stop botanique_test_biocad || true
+            pm2 start dist/app.js --name botanique_test_biocad
+          EOF

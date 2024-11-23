@@ -1,4 +1,13 @@
 loadComponent('#header', '/components/header.html').then(() => {
+    setActiveNavItem();
+});
+
+loadComponent('#container', '/components/main-container.html').then(() => {
+    renderDevices();
+    attachDeviceEventListeners();
+});
+
+function setActiveNavItem() {
     document.querySelectorAll('.nav-item').forEach(item => {
         const page = item.getAttribute('data-page');
         if (window.location.pathname.includes(page)) {
@@ -7,15 +16,7 @@ loadComponent('#header', '/components/header.html').then(() => {
             item.classList.remove('active');
         }
     });
-});
-
-loadComponent('#container', '/components/main-container.html').then(() => {
-    renderDevices();
-
-    const tbody = document.querySelector('.favorite-devices tbody');
-    tbody.addEventListener('change', handleStatusChange);
-    tbody.addEventListener('click', handleBellClick);
-});
+}
 
 const devices = [
     {
@@ -90,6 +91,12 @@ function getBellIcon(status) {
         default:
             return '/static/bell-icon.svg';
     }
+}
+
+function attachDeviceEventListeners() {
+    const tbody = document.querySelector('.favorite-devices tbody');
+    tbody.addEventListener('change', handleStatusChange);
+    tbody.addEventListener('click', handleBellClick);
 }
 
 function handleStatusChange(event) {
