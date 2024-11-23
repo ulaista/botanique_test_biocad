@@ -45,13 +45,6 @@ jobs:
               nvm use 22
     
               cd ${{ secrets.VDS_PATH }}
-            
-              if [ ! -f dist/package.json ]; then
-                echo "Error: package.json not found in the current directory"
-                exit 1
-              fi
-    
-              npm install
     
               if [ -f dist/app.js ]; then
                 pm2 stop botanique_test_biocad || true
