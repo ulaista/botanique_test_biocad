@@ -53,7 +53,7 @@ jobs:
     
               npm install
     
-              if [ -f dist/app.js ]; then
+              if [ -f app.js ]; then
                 pm2 stop botanique_test_biocad || true
                 pm2 start app.js --name botanique_test_biocad
               else
