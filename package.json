@@ -8,12 +8,11 @@
     "dev": "nodemon server/app.js",
     "lint": "eslint . --ext .js",
     "test": "jest",
-    "build": "npm run clean && npm run copy:public && npm run copy:server && npm run copy:components",
+    "build": "npm run clean && npm run copy:public && npm run copy:server",
     "clean": "rm -rf dist",
-    "copy:public": "copyfiles -u 1 public/**/* dist/",
-    "copy:server": "copyfiles -u 1 server/app.js dist/",
-    "copy:components": "copyfiles -u 1 public/components/**/* dist/public/components",
-    "start:build": "NODE_ENV=production node dist/app.js",
+    "copy:public": "copyfiles -u 1 public/**/* public/* dist/public/",
+    "copy:server": "copyfiles -u 1 server/app.js dist/server/",
+    "start:build": "NODE_ENV=production node dist/server/app.js",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
