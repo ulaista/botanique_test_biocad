@@ -35,18 +35,30 @@ jobs:
       - name: Copy files to VDS server
         run: |
           rsync -avz -e "ssh -o StrictHostKeyChecking=no" dist/ ${{ secrets.VDS_USER }}@${{ secrets.VDS_HOST }}:${{ secrets.VDS_PATH }}
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" package.json ${{ secrets.VDS_USER }}@${{ secrets.VDS_HOST }}:${{ secrets.VDS_PATH }}
 
       - name: Restart application on VDS server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VDS_USER }}@${{ secrets.VDS_HOST }} << 'EOF'
               export NVM_DIR="$HOME/.nvm"
               [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    
               nvm use 22
     
               cd ${{ secrets.VDS_PATH }}
+            
+              if [ ! -f package.json ]; then
+                echo "Error: package.json not found in the current directory"
+                exit 1
+              fi
+    
               npm install
     
-              pm2 stop botanique_test_biocad || true
-              pm2 start dist/app.js --name botanique_test_biocad
+              if [ -f dist/app.js ]; then
+                pm2 stop botanique_test_biocad || true
+                pm2 start dist/app.js --name botanique_test_biocad
+              else
+                echo "Error: dist/app.js not found"
+                exit 1
+              fi
           EOF
+        
