@@ -1,0 +1,53 @@
+{
+  "name": "botanique_test_biocad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "dev": "nodemon server/app.js",
+    "lint": "eslint . --ext .js",
+    "test": "jest",
+    "build": "npm run clean && npm run copy:public && npm run copy:server && npm run copy:components",
+    "clean": "rm -rf dist",
+    "copy:public": "copyfiles -u 1 public/**/* dist/",
+    "copy:server": "copyfiles -u 1 server/app.js dist/",
+    "copy:components": "copyfiles -u 1 public/components/**/* dist/public/components",
+    "start:build": "NODE_ENV=production node dist/app.js",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.53.0",
+    "husky": "^8.0.0",
+    "jest": "^29.7.0",
+    "lint-staged": "^13.0.5",
+    "nodemon": "^3.1.7"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es2020": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {}
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ]
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "author": "Ulugbek Istamov",
+  "license": "ISC"
+}
