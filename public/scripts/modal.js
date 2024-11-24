@@ -1,10 +1,10 @@
 function initializeModal() {
     const modal = document.getElementById('modal');
     const closeButton = document.querySelector('.close-button');
-    const qrCodeButton = document.querySelector('.qr-code-button');
+    const unavailableFeatures = document.querySelectorAll('.unavailable-feature');
 
-    if (!modal || !closeButton || !qrCodeButton) {
-        console.error("Один или несколько элементов для модального окна не найдены.");
+    if (!modal || !closeButton) {
+        console.error("Элементы модального окна не найдены.");
         return;
     }
 
@@ -16,8 +16,10 @@ function initializeModal() {
         modal.style.display = 'none';
     }
 
-    qrCodeButton.addEventListener('click', () => {
-        showModal();
+    unavailableFeatures.forEach(button => {
+        button.addEventListener('click', () => {
+            showModal();
+        });
     });
 
     closeButton.addEventListener('click', () => {
@@ -30,7 +32,6 @@ function initializeModal() {
         }
     });
 
-    console.log("Модальное окно инициализировано.");
 }
 
 export { initializeModal };
