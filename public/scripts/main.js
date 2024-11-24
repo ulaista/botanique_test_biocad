@@ -3,8 +3,13 @@ loadComponent('#header', '/components/header.html').then(() => {
 });
 
 loadComponent('#container', '/components/main-container.html').then(() => {
-    renderDevices();
-    attachDeviceEventListeners();
+    fetch('/api/devices')
+        .then(response => response.json())
+        .then(data => {
+            renderDevices(data);
+            attachDeviceEventListeners();
+        })
+        .catch(error => console.error('Ошибка загрузки данных о приборах:', error));
 });
 
 function setActiveNavItem() {
@@ -18,38 +23,7 @@ function setActiveNavItem() {
     });
 }
 
-const devices = [
-    {
-        id: 1,
-        name: "pH-метр Mettler-Toledo International, Inc. SevenCompact S220",
-        image: "/static/device1.png",
-        status: "Свободен",
-        bellStatus: "enabled"
-    },
-    {
-        id: 2,
-        name: "Спектрофотометр Varian, Inc Cary 50 Bio",
-        image: "/static/device2.png",
-        status: "Свободен",
-        bellStatus: "enabled"
-    },
-    {
-        id: 3,
-        name: "Титратор",
-        image: "/static/device3.png",
-        status: "Занят",
-        bellStatus: "dontdisturb"
-    },
-    {
-        id: 4,
-        name: "Коагулометр Tcoag, KC 4 Delta",
-        image: "/static/device4.png",
-        status: "Занят",
-        bellStatus: "disabled"
-    }
-];
-
-function renderDevices() {
+function renderDevices(devices) {
     const tbody = document.querySelector('.favorite-devices tbody');
     tbody.innerHTML = '';
 

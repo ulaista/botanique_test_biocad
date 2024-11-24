@@ -3,7 +3,12 @@ loadComponent('#header', '/components/header.html').then(() => {
 });
 
 loadComponent('#container', '/components/analytics-container.html').then(() => {
-    renderWorkLogs();
+    fetch('/api/worklogs')
+        .then(response => response.json())
+        .then(data => {
+            renderWorkLogs(data);
+        })
+        .catch(error => console.error('Ошибка загрузки данных о работах:', error));
 });
 
 function setActiveNavItem() {
@@ -17,34 +22,7 @@ function setActiveNavItem() {
     });
 }
 
-const workLogs = [
-    {
-        id: 1,
-        startTime: "09.10.2021, 15:46",
-        workType: "Измерение",
-        status: "В работе",
-        sampleInfo: "Образец/серия: 000100057935_170000010325_0000251849",
-        result: {
-            comment: "Промывка с указанием вещества: Вещество\nКомментарий: тест успешности",
-            status: "completed"
-        },
-        user: "morozovava"
-    },
-    {
-        id: 2,
-        startTime: "12.10.2021, 12:17",
-        workType: "Калибровка",
-        status: "В работе",
-        sampleInfo: "Номер колонки: Колонка 2<br>Образец: Образец 2<br>Образец: образец 1<br>Метод: метов тестовый<br>Номер колонки: Колонка 1",
-        result: {
-            comment: "",
-            status: "completed"
-        },
-        user: "morozovava"
-    }
-];
-
-function renderWorkLogs() {
+function renderWorkLogs(workLogs) {
     const tbody = document.querySelector('.work-log-table tbody');
     tbody.innerHTML = '';
 
