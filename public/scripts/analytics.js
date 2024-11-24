@@ -1,12 +1,18 @@
+import { addDateEventListeners } from './dateFilter.js';
+
 loadComponent('#header', '/components/header.html').then(() => {
     setActiveNavItem();
 });
+
+let workLogs = [];
 
 loadComponent('#container', '/components/analytics-container.html').then(() => {
     fetch('/api/worklogs')
         .then(response => response.json())
         .then(data => {
-            renderWorkLogs(data);
+            workLogs = data;
+            renderWorkLogs(workLogs);
+            addDateEventListeners(workLogs, renderWorkLogs);
         })
         .catch(error => console.error('Ошибка загрузки данных о работах:', error));
 });
@@ -24,6 +30,10 @@ function setActiveNavItem() {
 
 function renderWorkLogs(workLogs) {
     const tbody = document.querySelector('.work-log-table tbody');
+    if (!tbody) {
+        return;
+    }
+
     tbody.innerHTML = '';
 
     workLogs.forEach(log => {

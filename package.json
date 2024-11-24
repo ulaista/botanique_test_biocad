@@ -9,7 +9,7 @@
     "build": "npm run clean && npm run copy:public && npm run copy:server",
     "clean": "rm -rf dist",
     "copy:public": "copyfiles -u 1 public/**/* public/* dist/public/",
-    "copy:server": "copyfiles -u 1 server/app.js dist/server/",
+    "copy:server": "copyfiles -u 1 server/**/* server/* dist/server/",
     "start:build": "NODE_ENV=production node dist/server/app.js"
   },
   "dependencies": {
