@@ -1,7 +1,9 @@
 import { addSearchEventListener } from './filter.js';
+import { initializeModal } from './modal.js';
 
 loadComponent('#header', '/components/header.html').then(() => {
     setActiveNavItem();
+    initializeModal();
 });
 
 let devices = [];
@@ -14,6 +16,7 @@ loadComponent('#container', '/components/main-container.html').then(() => {
             renderDevices(devices);
             attachDeviceEventListeners();
             addSearchEventListener(devices, renderDevices);
+            initializeModal();
         })
         .catch(error => console.error('Ошибка загрузки данных о приборах:', error));
 });

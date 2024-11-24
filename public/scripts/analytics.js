@@ -1,7 +1,9 @@
 import { addDateEventListeners } from './dateFilter.js';
+import { initializeModal } from './modal.js';
 
 loadComponent('#header', '/components/header.html').then(() => {
     setActiveNavItem();
+    initializeModal();
 });
 
 let workLogs = [];
@@ -13,6 +15,7 @@ loadComponent('#container', '/components/analytics-container.html').then(() => {
             workLogs = data;
             renderWorkLogs(workLogs);
             addDateEventListeners(workLogs, renderWorkLogs);
+            initializeModal();
         })
         .catch(error => console.error('Ошибка загрузки данных о работах:', error));
 });
