@@ -282,3 +282,83 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@media (max-width: 768px) {
+  .analytics-container {
+    padding: 0 15px;
+  }
+
+  .device-header,
+  .device-actions-on,
+  .date-filter {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .device-header {
+    align-items: flex-start;
+  }
+
+  .device-actions {
+    margin-top: 10px;
+    gap: 5px;
+  }
+
+  .device-details h2 {
+    font-size: 14px;
+  }
+
+  .device-meta {
+    font-size: 12px;
+  }
+
+  .dropdown-button,
+  .status-button {
+    width: 100%;
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .actions-icons {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .date-range {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .date-input {
+    width: 100%;
+  }
+
+  .time-buttons {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .time-button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .work-log-table {
+    font-size: 12px;
+  }
+
+  .work-log-table th,
+  .work-log-table td {
+    padding: 10px;
+  }
+
+  .work-log-table tr {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .work-log-table td {
+    display: flex;
+    justify-content: space-between;
+  }
+}
