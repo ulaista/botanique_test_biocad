@@ -115,3 +115,108 @@ select {
   border-radius: 4px;
   font-size: 14px;
 }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    border: 1px solid #c6c6c6;
+  }
+
+  .search-bar input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .qr-code-button {
+    margin-left: 0;
+    align-self: flex-end;
+  }
+
+  .favorite-devices-header {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+
+  .favorite-devices {
+    font-size: 13px;
+  }
+
+  .favorite-devices th,
+  .favorite-devices td {
+    padding: 8px;
+  }
+
+  .favorite-devices tr {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .favorite-devices td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .device-info-img {
+    margin-bottom: 10px;
+  }
+
+  .notification-button {
+    margin-left: 0;
+  }
+
+  select {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
