@@ -1,13 +1,19 @@
+import { addSearchEventListener } from './filter.js';
+
 loadComponent('#header', '/components/header.html').then(() => {
     setActiveNavItem();
 });
+
+let devices = [];
 
 loadComponent('#container', '/components/main-container.html').then(() => {
     fetch('/api/devices')
         .then(response => response.json())
         .then(data => {
-            renderDevices(data);
+            devices = data;
+            renderDevices(devices);
             attachDeviceEventListeners();
+            addSearchEventListener(devices, renderDevices);
         })
         .catch(error => console.error('Ошибка загрузки данных о приборах:', error));
 });
@@ -93,7 +99,7 @@ function handleBellClick(event) {
         const device = devices.find(d => d.id == deviceId);
         if (device) {
             device.bellStatus = device.bellStatus === 'enabled' ? 'dontdisturb' : 'enabled';
-            renderDevices();
+            renderDevices(devices);
         }
     }
 }
